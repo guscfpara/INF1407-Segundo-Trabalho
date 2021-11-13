@@ -1,0 +1,37 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+
+{% block title %}Chat{% endblock %}
+
+{% block head %}
+<!-- <script type="text/javascript" src="{% static 'chat/chat.js' %}"></script> -->
+{% endblock %}
+
+{% block content %}
+  <p>
+    Voce esta na sala de chat como <b>{{nickname}}</b>
+  </p>
+
+  <table id="idTableChat">
+    <tr>
+      <th>Sem Mensagens</th>
+    </tr>
+  </table>
+
+
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      <tr valign="top">
+        <td>
+          <table>
+            {{form.as_table}}
+          </table>
+        </td>
+        <td>
+          <input type="submit" value="Enviar">
+        </td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

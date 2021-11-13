@@ -1,0 +1,15 @@
+{% extends 'registro/base.html' %}
+
+{% block title %} Lista de Todo {%endblock %}
+
+{% block content %}
+
+<h1>Atualização de item</h1>
+<form class="" action="" method="post">
+  {% csrf_token %}
+  <table>
+    {{todo.as_table}}
+  </table>
+  <button type="submit">Atualiza</button>
+</form>
+{%endblock%}

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="../../static/MeuSite/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+    {% block head %}{% endblock %}
+  </head>
+  <body class="mx-4">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarColor01" style="">
+        <ul class="navbar-nav mx-5">
+          <li class="nav-item active mr-2">
+            <a href="{% url 'sec-home' %}">Home</a>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          {% if user.is_authenticated %}
+
+          <li class="nav-item mr-2">
+            <a href="{% url 'todoList:cria-todo' %}">Cria Tarefas</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a href="{% url 'todoList:lista-todo' %}">Lista Tarefas</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a href="{% url 'todoList:todo-minhaLista' %}">Minhas Tarefas</a>
+          </li>
+          <li class="nav-item dropdown mr-2">
+            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+              Perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'sec-updateProfile' pk=user.id %}">Update Perfil</a>
+              <a class="dropdown-item" href="{% url 'sec-passwordChange' %}">Troca Senha</a>
+            </div>
+          </li>
+          <li class="nav-item mr-2">
+            <a href="{% url 'sec-logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item mr-2">
+            <a href="{% url 'sec-registro' %}">Registro</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a href="{% url 'sec-login' %}">Login</a>
+          </li>
+
+        </ul>
+        {% endif %}
+        Voce é {% firstof user.first_name user.username "visitante" %}
+      </div>
+    </nav>
+
+    <div class="mt-4">
+      {% block content %} {% endblock %}
+    </div>
+  </body>
+</html>

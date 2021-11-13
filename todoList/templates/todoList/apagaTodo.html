@@ -1,0 +1,16 @@
+{% extends 'registro/base.html' %}
+
+{% block title %} Apaga Item {%endblock %}
+
+{% block content %}
+
+<h1>Remoção de item</h1>
+<form method="POST">
+  {% csrf_token %}
+  Confirma a remoção de: {{ todo.texto }} ({{todo.prazo}})?<br>
+
+    <a href="{% url 'todoList:lista-todo' %}"class="btn btn-primary" >Cancela</a>
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+
+</form>
+{%endblock%}

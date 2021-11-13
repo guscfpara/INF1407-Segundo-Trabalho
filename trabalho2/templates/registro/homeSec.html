@@ -1,0 +1,46 @@
+{% extends 'registro/base.html' %}
+
+{% block title %} Homepage de Controle de Acesso {%endblock %}
+
+{% block content %}
+
+
+  <div class="container">
+    <h2 class="text-center">Pagina Inicial </h2>
+
+
+    <div class="row">
+
+
+
+    <div class="col-sm card text-white bg-primary mr-3" style="max-width: 20rem;">
+      <div class="card-header">Tarefas Públicas</div>
+      <div class="card-body">
+        <p class="card-text"> Ver tarefas públicas de todos os usuários</p>
+        <a style="color: black;" href="{% url 'todoList:lista-todo' %}"> Clique aqui </a>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm card text-white bg-info mr-3" style="max-width: 20rem;">
+      <div class="card-header">Minhas Tarefas</div>
+      <div class="card-body">
+        <p class="card-text"> Ver minhas tarefas</p>
+        <a style="color: black;" href="{% url 'todoList:todo-minhaLista' %}"> Clique aqui </a>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm card text-white bg-success mr-3" style="max-width: 20rem;">
+      <div class="card-header">Nova Tarefa</div>
+      <div class="card-body">
+        <p class="card-text"> Criar Nova tarefa</p>
+        <a style="color: black;" href="{% url 'todoList:cria-todo' %}"> Clique aqui </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{%endblock%}

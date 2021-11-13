@@ -1,0 +1,24 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+
+{% block title %} Cadastro de Usuario {%endblock %}
+
+{% block head %}
+<script type="text/javascript" src="{% static 'Registro/js/registro.js' %}">
+
+</script>
+{% endblock %}
+
+{% block content %}
+
+  <h2>Entre com seus dados </h2>
+  <div class="" id="idErro">
+    &nbsp;
+  </div>
+  <form class=""  method="post">
+    {% csrf_token %}
+    <!-- casa: formato tabela -->
+    {{form.as_p}}
+    <input type="submit" value="Cria Usuario">
+  </form>
+{%endblock%}
