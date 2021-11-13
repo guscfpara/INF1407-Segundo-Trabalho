@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from todoList.models import Tarefa
-from todoList.forms import TarefaForm
+from todoList.models import Atividade
+from todoList.forms import AtividadeForm
 from django.views.generic.base import View
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse_lazy
@@ -16,14 +16,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class TodoListView(View):
     def get(self,request,*args, **kwargs):
-        todos = Tarefa.objects.filter(privada=False)
-        context = {'todos': todos, 'minhasTarefas': False }
+        todos = Atividade.objects.filter(privada=False)
+        context = {'todos': todos, 'minhasAtividades': False }
         return render(request, 'todoList/listaTodo.html', context)
 
 @login_required()
-def minhasTarefas(request):
+def minhasAtividades(request):
 
-    todosAutor = Tarefa.objects.filter(autor=request.user).values()
+    todosAutor = Atividade.objects.filter(autor=request.user).values()
     todosAutor = list(todosAutor)
     data = {
         'data': todosAutor,
@@ -32,18 +32,19 @@ def minhasTarefas(request):
 
 class AuthorListView(LoginRequiredMixin,View):
     def get(self,request,*args, **kwargs):
-        todosAutor = Tarefa.objects.filter(autor=request.user)
-        context = {'todos': todosAutor, 'minhasTarefas': True  }
+        todosAutor = Atividade.objects.filter(autor=request.user)
+        context = {'todos': todosAutor, 'minhasAtividades': True  }
         return render(request, 'todoList/listaTodo.html', context)
 
 class TodoCreateView(LoginRequiredMixin, View):
     def get(self,request,*args, **kwargs):
-        context = {'formulario': TarefaForm, }
+        context = {'formulario': AtividadeForm, }
         return render(request, 'todoList/criaTodo.html', context)
 
 
     def post(self,request,*args, **kwargs):
-        formulario = TarefaForm(data=request.POST,initial={'autor': request.user.username})
+        formulario = AtividadeForm(data=request.POST,initial={'autor': request.user.username})
+        print(formulario,formulario.is_valid())
         #formulario = dados do POST
         if formulario.is_valid():
 
@@ -59,14 +60,14 @@ class TodoCreateView(LoginRequiredMixin, View):
 class TodoUpdateView(View):
 
     def get(self,request,pk,*args, **kwargs):
-        todo = Tarefa.objects.get(pk=pk)
-        formulario = TarefaForm(instance=todo)
+        todo = Atividade.objects.get(pk=pk)
+        formulario = AtividadeForm(instance=todo)
         context = {'todo': formulario, }
         return render(request, 'todoList/atualizaTodo.html', context)
 
     def post(self,request,pk,*args, **kwargs):
-        todo = get_object_or_404(Tarefa, pk=pk)
-        formulario = TarefaForm(request.POST, instance=todo)
+        todo = get_object_or_404(Atividade, pk=pk)
+        formulario = AtividadeForm(request.POST, instance=todo)
 
         if formulario.is_valid():
             print('form up')
@@ -81,12 +82,12 @@ class TodoUpdateView(View):
 
 class TodoDeleteView(View):
     def get(self,request,pk,*args, **kwargs):
-        todo = Tarefa.objects.get(pk=pk)
+        todo = Atividade.objects.get(pk=pk)
         context = {'todo': todo, }
         return render(request, 'todoList/apagaTodo.html',context)
 
     def post (self,request,pk,*args, **kwargs):
-        todo = Tarefa.objects.get(pk=pk)
+        todo = Atividade.objects.get(pk=pk)
         todo.delete()
         print("Removendo o Todo", pk)
         return HttpResponseRedirect(reverse_lazy("todoList:lista-todo"))

@@ -1,8 +1,8 @@
-from todoList.models import Tarefa
+from todoList.models import Atividade
 from django import forms
 
-class TarefaForm(forms.ModelForm):
+class AtividadeForm(forms.ModelForm):
     # autor = forms.CharField(required=False, widget=forms.TextInput(attrs={'readonly': 'True'}))
     class Meta:
-        model = Tarefa
+        model = Atividade
         fields = ['texto', 'prazo', 'privada']

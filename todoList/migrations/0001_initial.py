@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tarefa',
+            name='Atividade',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('texto', models.CharField(help_text='digite a mensagem', max_length=200)),
-                ('prazo', models.DateField(help_text='digite a data da entrega')),
+                ('prazo', models.DateField(help_text="digite a data da entrega(YYYY-MM-DD)")),
             ],
         ),
     ]

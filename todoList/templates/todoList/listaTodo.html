@@ -8,23 +8,14 @@
 
 {% block content %}
 
-<div class="mb-3">
-  <span>Adicionar mais um item:</span>
-  <a href="{% url 'todoList:cria-todo' %}">
-    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-    </svg>
-  </a>
-</div>
-
-<table id="tabela" class="table table-hover" border="3">
-  <thead>
+<table id="tabela" class="table table-hover" border="3" >
+  <thead >
     <tr class="table-primary">
-      <th scope="col">Autor</th>
-      <th scope="col">Data</th>
-      <th scope='col'>Tarefa</th>
-      <th scope='col'>Privacidade</th>
-      <th scope='col'>Ações</th>
+      <th scope="col" style="background-color: #4886FF!important;">Autor</th>
+      <th scope="col" style="background-color: #4886FF!important;">Data</th>
+      <th scope='col' style="background-color: #4886FF!important;">Atividade</th>
+      <th scope='col' style="background-color: #4886FF!important;">Privacidade</th>
+      <th scope='col' style="background-color: #4886FF!important;">Ações</th>
 
     </tr>
   </thead>
@@ -42,7 +33,7 @@
       {% endif %}
 
 
-      {% if minhasTarefas %}
+      {% if minhasAtividades %}
       <td>
         <a href="{% url 'todoList:atualiza-todo' pk=todo.id %}" class="btn btn-primary">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -67,12 +58,21 @@
   <tbody>
     <tr class="tablwe-secondary">
       <th colspan="5">
-        Ainda nao tem tarefas cadastrados
+        Ainda nao tem Atividades cadastrados
       </th>
     </tr>
   </tbody>
 
   {% endfor %}
 </table>
+
+<div class="mb-3">
+  <span>Adicionar mais um item:</span>
+  <a href="{% url 'todoList:cria-todo' %}">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+    </svg>
+  </a>
+</div>
 
 {%endblock%}

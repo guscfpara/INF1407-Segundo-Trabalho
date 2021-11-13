@@ -1,6 +1,6 @@
 onload = function(e) {
   console.log('onload');
-  document.getElementById("minhasTarefas").addEventListener("change", filtraMensagens);
+  document.getElementById("minhasAtividades").addEventListener("change", filtraMensagens);
 
   // setInterval(pegaMensagens, 5000)
 }
@@ -13,7 +13,7 @@ function filtraMensagens(){
 
   let url= '';
   if(this.checked){
-    url = 'minhasTarefas/';
+    url = 'minhasAtividades/';
   }
 
   console.log('url', url)

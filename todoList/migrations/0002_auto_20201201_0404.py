@@ -14,12 +14,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='tarefa',
+            model_name='Atividade',
             name='autor',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
-            model_name='tarefa',
+            model_name='Atividade',
             name='texto',
             field=models.CharField(max_length=200),
         ),
