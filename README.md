@@ -15,7 +15,7 @@ O objetivo desse trabalho foi desenvolver uma aplicação web, onde o usuário �
 ### Instalar as dependências do projeto :
 
 ```sh
-pip iunstall -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Caso seja necessário rodar a migração do banco :
