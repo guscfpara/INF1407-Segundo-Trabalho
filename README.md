@@ -41,31 +41,31 @@ https://inf1407-trellopython.herokuapp.com
 
 ## Home Page
 
-<img width=300 src=assets/homepage.png/>
+<img width=1000 src=assets/homepage.png/>
 
 ## Registro
 
-<img width=300 src=assets/registro.png/>
+<img width=1000 src=assets/registro.png/>
 
 ## Login
 
-<img width=300 src=assets/login.png/>
+<img width=1000 src=assets/login.png/>
 
 ## Criar Atividades
 
-<img width=300 src=assets/criar.png/>
+<img width=1000 src=assets/criar.png/>
 
 ## Listar Atividades Públicas
 
-<img width=300 src=assets/lista_minhas.png/>
+<img width=1000 src=assets/lista_minhas.png/>
 
 ## Listar Atividades Privadas
 
-<img width=300 src=assets/minhas.png/>
+<img width=1000 src=assets/minhas.png/>
 
 ## Update Perfil
 
-<img width=300 src=assets/update_atividade.png/>
+<img width=1000 src=assets/update_atividade.png/>
 
 ## Author
 
